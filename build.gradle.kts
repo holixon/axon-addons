@@ -1,12 +1,12 @@
+
 plugins {
     base
     idea
 }
 
-repositories {
-    // Use jcenter for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+apply {
+    // repos set in /gradle
+    from("gradle/repositories.gradle.kts")
 }
 //
 //dependencies {
@@ -19,3 +19,11 @@ repositories {
 //    // Use the Kotlin JUnit integration.
 //    testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 //}
+
+
+dependencies {
+    // Make the root project archives configuration depend on every sub-project
+    subprojects.forEach {
+        archives(it)
+    }
+}

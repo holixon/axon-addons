@@ -1,3 +1,5 @@
 rootProject.name = "axon-addons"
 
-include(":modules:kotlin-dsl")
+include(":axon-jgiven")
+
+//include(":modules:kotlin-dsl")
