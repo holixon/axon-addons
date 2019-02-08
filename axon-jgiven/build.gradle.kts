@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
   kotlin("jvm") version Versions.kotlin
-  //id("org.jetbrains.kotlin.plugin.allopen") version Versions.kotlin
+  id("org.jetbrains.kotlin.plugin.allopen") version Versions.kotlin
   `java-library`
   id("com.tngtech.jgiven.gradle-plugin") version Versions.jgiven
 }
@@ -30,9 +30,9 @@ dependencies {
   testImplementation("org.slf4j:slf4j-simple:1.7.25")
 }
 
-//allOpen {
-//  annotation("io.toolisticon.axon.addons.jgiven.AxonStage")
-//}
+allOpen {
+  annotation("io.toolisticon.axon.addons.jgiven.AxonStage")
+}
 
 tasks {
   withType<KotlinCompile> {

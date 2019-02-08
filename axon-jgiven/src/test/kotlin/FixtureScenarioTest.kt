@@ -16,13 +16,15 @@ import org.junit.jupiter.api.Test
   @Test
   fun `issue command creates aggregate`() {
     GIVEN
-      .no_prior_activity()
+      .noPriorActivity()
 
     WHEN
       .command(IssueCommand("1",100))
 
     THEN
-      .expect_event(IssuedEvent("1",100))
+      .expectEvent(IssuedEvent("1",100))
+      .and()
+      .expectState(GiftcardAggregate("1", 100))
   }
 
   @Test
@@ -34,7 +36,7 @@ import org.junit.jupiter.api.Test
       .command(RedeemCommand("1", 50))
 
     THEN
-      .expect_event(RedeemedEvent("1", 50))
+      .expectEvent(RedeemedEvent("1", 50))
   }
 
    @Test
@@ -48,9 +50,9 @@ import org.junit.jupiter.api.Test
        .command(RedeemCommand("1",40))
 
      THEN
-       .expect_event(RedeemedEvent("1", 40))
+       .expectEvent(RedeemedEvent("1", 40))
        .and()
-       .expect_state("balance", 20 ) { it.balance }
+       .expectState("balance", 20 ) { it.balance }
    }
 
 
@@ -65,6 +67,6 @@ import org.junit.jupiter.api.Test
        .command(RedeemCommand("1",20))
 
      THEN
-       .expect_state("balance", 10 ) { it.balance }
+       .expectState("balance", 10 ) { it.balance }
    }
  }
