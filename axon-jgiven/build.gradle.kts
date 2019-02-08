@@ -1,5 +1,6 @@
 import _buildsrc.axon
 import _buildsrc.junit5
+import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -7,6 +8,8 @@ plugins {
   id("org.jetbrains.kotlin.plugin.allopen") version Versions.kotlin
   `java-library`
   id("com.tngtech.jgiven.gradle-plugin") version Versions.jgiven
+
+  id("org.jetbrains.dokka") version "0.9.17"
 }
 
 apply {
@@ -43,6 +46,17 @@ tasks {
 
   withType<Test> {
     useJUnitPlatform()
+  }
+
+  withType<DokkaTask> {
+    // suppresses undocumented classes but not dokka warnings
+    // https://github.com/Kotlin/dokka/issues/229 && https://github.com/Kotlin/dokka/issues/319
+    reportUndocumented = false
+    outputFormat = "javadoc"
+    outputDirectory = "$buildDir/javadoc"
+    // Java 8 is only version supported both by Oracle/OpenJDK and Dokka itself
+    // https://github.com/Kotlin/dokka/issues/294
+    enabled = JavaVersion.current().isJava8
   }
 }
 
