@@ -1,9 +1,10 @@
 package io.toolisticon.addons.axon.examples.giftcard
 
-import io.toolisticon.addons.axon.examples.giftcard.GiftcardCommand.IssueCommand
-import io.toolisticon.addons.axon.examples.giftcard.GiftcardCommand.RedeemCommand
-import io.toolisticon.addons.axon.examples.giftcard.GiftcardEvent.IssuedEvent
-import io.toolisticon.addons.axon.examples.giftcard.GiftcardEvent.RedeemedEvent
+import io.toolisticon.addons.axon.examples.giftcard.api.GiftcardCommand.IssueCommand
+import io.toolisticon.addons.axon.examples.giftcard.api.GiftcardCommand.RedeemCommand
+import io.toolisticon.addons.axon.examples.giftcard.api.GiftcardEvent.IssuedEvent
+import io.toolisticon.addons.axon.examples.giftcard.api.GiftcardEvent.RedeemedEvent
+import io.toolisticon.addons.axon.examples.giftcard.domain.GiftcardAggregate
 import org.axonframework.test.aggregate.AggregateTestFixture
 import org.junit.jupiter.api.Test
 

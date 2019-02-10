@@ -1,7 +1,8 @@
-package io.toolisticon.axon.addons.jgiven
+package io.toolisticon.addons.axon.jgiven.aggregate
 
 import com.tngtech.jgiven.Stage
 import com.tngtech.jgiven.annotation.*
+import io.toolisticon.addons.axon.jgiven.AxonStage
 import org.axonframework.test.aggregate.ResultValidator
 import org.hamcrest.MatcherAssert
 

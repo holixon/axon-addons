@@ -1,11 +1,11 @@
-package io.toolisticon.axon.addons.jgiven
+package io.toolisticon.addons.axon.jgiven
 
 import com.tngtech.jgiven.annotation.ProvidedScenarioState
-import io.toolisticon.axon.addons.jgiven.test.GiftcardAggregate
-import io.toolisticon.axon.addons.jgiven.test.GiftcardCommand.IssueCommand
-import io.toolisticon.axon.addons.jgiven.test.GiftcardCommand.RedeemCommand
-import io.toolisticon.axon.addons.jgiven.test.GiftcardEvent.IssuedEvent
-import io.toolisticon.axon.addons.jgiven.test.GiftcardEvent.RedeemedEvent
+import io.toolisticon.addons.axon.examples.giftcard.domain.GiftcardAggregate
+import io.toolisticon.addons.axon.examples.giftcard.api.GiftcardCommand.IssueCommand
+import io.toolisticon.addons.axon.examples.giftcard.api.GiftcardCommand.RedeemCommand
+import io.toolisticon.addons.axon.examples.giftcard.api.GiftcardEvent.IssuedEvent
+import io.toolisticon.addons.axon.examples.giftcard.api.GiftcardEvent.RedeemedEvent
 import org.axonframework.test.aggregate.AggregateTestFixture
 import org.junit.jupiter.api.Test
 

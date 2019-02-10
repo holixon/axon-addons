@@ -1,14 +1,14 @@
-package io.toolisticon.axon.addons.jgiven.test
+package io.toolisticon.addons.axon.examples.giftcard.domain
 
-import io.toolisticon.axon.addons.jgiven.test.GiftcardCommand.IssueCommand
-import io.toolisticon.axon.addons.jgiven.test.GiftcardCommand.RedeemCommand
-import io.toolisticon.axon.addons.jgiven.test.GiftcardEvent.IssuedEvent
-import io.toolisticon.axon.addons.jgiven.test.GiftcardEvent.RedeemedEvent
+import io.toolisticon.addons.axon.examples.giftcard.api.GiftcardCommand.IssueCommand
+import io.toolisticon.addons.axon.examples.giftcard.api.GiftcardCommand.RedeemCommand
+import io.toolisticon.addons.axon.examples.giftcard.api.GiftcardEvent.IssuedEvent
+import io.toolisticon.addons.axon.examples.giftcard.api.GiftcardEvent.RedeemedEvent
 import org.axonframework.commandhandling.CommandHandler
 import org.axonframework.eventsourcing.EventSourcingHandler
 import org.axonframework.modelling.command.AggregateIdentifier
+
 import org.axonframework.modelling.command.AggregateLifecycle.apply
-import org.axonframework.modelling.command.TargetAggregateIdentifier
 
 @Suppress("unused")
 data class GiftcardAggregate(
@@ -47,20 +47,5 @@ data class GiftcardAggregate(
   fun on(evt: RedeemedEvent) {
     this.balance -= evt.amount
   }
-
-}
-
-sealed class GiftcardCommand(@TargetAggregateIdentifier open val id: String) {
-
-  data class IssueCommand(override val id: String, val initialBalance: Int) : GiftcardCommand(id)
-
-  data class RedeemCommand(override val id: String, val amount: Int) : GiftcardCommand(id)
-
-}
-
-sealed class GiftcardEvent(open val id: String) {
-
-  data class IssuedEvent(override val id: String, val initialBalance: Int) : GiftcardEvent(id)
-  data class RedeemedEvent(override val id: String, val amount: Int) : GiftcardEvent(id)
 
 }

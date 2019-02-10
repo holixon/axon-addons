@@ -1,12 +1,12 @@
-
 plugins {
-    base
-    idea
+  base
+  idea
+  `maven-publish`
 }
 
 apply {
-    // repos set in /gradle
-    from("gradle/repositories.gradle.kts")
+  // repos set in /gradle
+  from("gradle/repositories.gradle.kts")
 }
 //
 //dependencies {
@@ -22,8 +22,8 @@ apply {
 
 
 dependencies {
-    // Make the root project archives configuration depend on every sub-project
-    subprojects.forEach {
-        archives(it)
-    }
+  // Make the root project archives configuration depend on every sub-project
+  subprojects.forEach {
+    archives(it)
+  }
 }

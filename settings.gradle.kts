@@ -1,5 +1,8 @@
 rootProject.name = "axon-addons"
 
 include(":axon-jgiven")
+include(":axon-kotlin")
+//include(":axon-mapdb")
 
-//include(":modules:kotlin-dsl")
+
+include(":examples:giftcard-sample")
