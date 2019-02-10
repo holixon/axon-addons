@@ -10,7 +10,11 @@ plugins {
   id("com.tngtech.jgiven.gradle-plugin") version Versions.jgiven
 
   id("org.jetbrains.dokka") version "0.9.17"
+
+  `maven-publish`
 }
+
+version = "0.1.0-SNAPSHOT"
 
 apply {
   // repos set in /gradle
@@ -40,6 +44,11 @@ allOpen {
   annotation("io.toolisticon.addons.axon.jgiven.AxonStage")
 }
 
+val sourcesJar by tasks.registering(Jar::class) {
+  classifier = "sources"
+  from(sourceSets.main.get().allSource)
+}
+
 tasks {
   withType<KotlinCompile> {
     kotlinOptions {
@@ -60,6 +69,27 @@ tasks {
     // Java 8 is only version supported both by Oracle/OpenJDK and Dokka itself
     // https://github.com/Kotlin/dokka/issues/294
     enabled = JavaVersion.current().isJava8
+  }
+
+//  register<Jar>("sourcesJar") {
+//    from(sourceSets.main.get().allJava)
+//    archiveClassifier.set("sources")
+//  }
+//
+//  register<Jar>("javadocJar") {
+//    from(tasks.javadoc)
+//    archiveClassifier.set("javadoc")
+//  }
+}
+
+publishing {
+  publications {
+    create<MavenPublication>("maven") {
+      artifactId = "axon-jgiven"
+      version = "0.1.0-SNAPSHOT"
+
+      from(components["java"])
+    }
   }
 }
 

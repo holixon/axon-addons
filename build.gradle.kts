@@ -8,6 +8,11 @@ apply {
   // repos set in /gradle
   from("gradle/repositories.gradle.kts")
 }
+
+allprojects {
+  group = "io.toolisticon.addons.axon"
+}
+
 //
 //dependencies {
 //    // Use the Kotlin JDK 8 standard library.
