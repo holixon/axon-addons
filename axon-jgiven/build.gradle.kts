@@ -22,21 +22,20 @@ apply {
 }
 
 dependencies {
-  api("com.tngtech.jgiven:jgiven-junit5:${Versions.jgiven}")
+
 
   implementation(kotlin("stdlib-jdk8"))
+
+
   implementation(axon("test"))
+  implementation("com.tngtech.jgiven:jgiven-junit5:${Versions.jgiven}")
+  implementation("org.hamcrest:hamcrest-core:2.1")
+
 
   testImplementation(junit5("api"))
   testRuntimeOnly(junit5("engine"))
-  implementation("org.hamcrest:hamcrest-core:2.1")
-
-  //testCompileOnly("junit:junit:4.12")
-  //testRuntimeOnly("org.junit.vintage:junit-vintage-engine:${Versions.junit5}")
 
   testImplementation(project(":examples:giftcard-sample"))
-
-
   testImplementation("org.slf4j:slf4j-simple:1.7.25")
 }
 
