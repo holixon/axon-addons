@@ -1,11 +1,11 @@
 package io.toolisticon.addons.axon.jgiven
 
 import com.tngtech.jgiven.annotation.ProvidedScenarioState
-import io.toolisticon.addons.axon.examples.giftcard.domain.GiftcardAggregate
 import io.toolisticon.addons.axon.examples.giftcard.api.GiftcardCommand.IssueCommand
 import io.toolisticon.addons.axon.examples.giftcard.api.GiftcardCommand.RedeemCommand
 import io.toolisticon.addons.axon.examples.giftcard.api.GiftcardEvent.IssuedEvent
 import io.toolisticon.addons.axon.examples.giftcard.api.GiftcardEvent.RedeemedEvent
+import io.toolisticon.addons.axon.examples.giftcard.domain.GiftcardAggregate
 import org.axonframework.test.aggregate.AggregateTestFixture
 import org.junit.jupiter.api.Test
 
@@ -24,7 +24,7 @@ class GiftcardSampleScenarioTest : AggregateFixtureScenarioTest<GiftcardAggregat
 
     THEN
       .expectEvent(IssuedEvent("1", 100))
-      .and()
+      .AND
       .expectState(GiftcardAggregate("1", 100))
   }
 
@@ -44,7 +44,7 @@ class GiftcardSampleScenarioTest : AggregateFixtureScenarioTest<GiftcardAggregat
   fun `redeem twice by commands`() {
     GIVEN
       .command(IssueCommand("1", 100))
-      .and()
+      .AND
       .command(RedeemCommand("1", 40))
 
     WHEN
@@ -52,7 +52,7 @@ class GiftcardSampleScenarioTest : AggregateFixtureScenarioTest<GiftcardAggregat
 
     THEN
       .expectEvent(RedeemedEvent("1", 40))
-      .and()
+      .AND
       .expectState("balance", 20) { it.balance }
   }
 
@@ -61,7 +61,7 @@ class GiftcardSampleScenarioTest : AggregateFixtureScenarioTest<GiftcardAggregat
   fun `redeem by vararg commands`() {
     GIVEN
       .command(IssueCommand("1", 100))
-      .and()
+      .AND
       .commands(RedeemCommand("1", 40), RedeemCommand("1", 30))
 
     WHEN
