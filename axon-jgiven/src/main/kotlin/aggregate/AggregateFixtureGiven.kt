@@ -40,7 +40,7 @@ class AggregateFixtureGiven<T> : Stage<AggregateFixtureGiven<T>>() {
   fun event(@Quoted event: Any) = this.events(event)
 
   @As("events:")
-  fun events(@Quoted @Table vararg events: Any) = this.commands(events.toList())
+  fun events(@Quoted @Table vararg events: Any) = this.events(events.toList())
 
   @As("events:")
   fun events(@Quoted @Table events: List<Any>) = execute {

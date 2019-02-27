@@ -16,7 +16,6 @@ class GiftcardSampleScenarioTest : AggregateFixtureScenarioTest<GiftcardAggregat
 
   @Test
   fun `issue command creates aggregate`() {
-
     GIVEN
       .noPriorActivity()
 
