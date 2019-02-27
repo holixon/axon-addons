@@ -57,6 +57,14 @@ class AggregateFixtureGiven<T> : Stage<AggregateFixtureGiven<T>>() {
       testExecutor.andGivenCurrentTime(instant)
   }
 
+  fun state(aggregate: Supplier<T>) = execute {
+    fixture.givenState(aggregate)
+  }
+
+  fun state(aggregate: () -> T) = execute {
+    fixture.givenState(aggregate)
+  }
+
   fun timeAdvancesTo(instant: Instant) {
     if (!::testExecutor.isInitialized)
       fixture.andThenTimeAdvancesTo(instant)
@@ -69,14 +77,6 @@ class AggregateFixtureGiven<T> : Stage<AggregateFixtureGiven<T>>() {
       fixture.andThenTimeElapses(duration)
     else
       testExecutor.andThenTimeElapses(duration)
-  }
-
-  fun state(aggregate: Supplier<T>) {
-    fixture.givenState(aggregate)
-  }
-  
-  fun state(aggregate: () -> T) {
-    fixture.givenState(aggregate)
   }
 
   private fun execute(block: () -> TestExecutor<T>) = self().apply {
