@@ -3,9 +3,14 @@ package io.toolisticon.addons.axon.jgiven.aggregate
 import com.tngtech.jgiven.Stage
 import com.tngtech.jgiven.annotation.*
 import io.toolisticon.addons.axon.jgiven.AxonStage
+import org.axonframework.commandhandling.CommandResultMessage
+import org.axonframework.deadline.DeadlineMessage
+import org.axonframework.eventhandling.EventMessage
 import org.axonframework.test.aggregate.ResultValidator
 import org.hamcrest.Matcher
 import org.hamcrest.MatcherAssert
+import java.time.Duration
+import java.time.Instant
 
 
 @AxonStage
@@ -19,6 +24,13 @@ class AggregateFixtureThen<T> : Stage<AggregateFixtureThen<T>>() {
 
   @As("expect events:")
   fun expectEvents(@Quoted @Table vararg events: Any) = execute { resultValidator.expectEvents(*events) }
+
+  @As("expect events:")
+  fun expectEvents(@Quoted @Table vararg events: EventMessage<*>) = execute { resultValidator.expectEvents(*events) }
+
+  fun expectEventsMatching(matcher: Matcher<out MutableList<in EventMessage<*>>>) = execute { resultValidator.expectEventsMatching(matcher) }
+
+  fun expectNoEvents() = execute { resultValidator.expectNoEvents() }
 
   @As("expect state: $=$")
   fun <E : Any> expectState(@Quoted field: String, @Quoted expected: E, @Hidden accessor: (T) -> E) = execute {
@@ -46,10 +58,69 @@ class AggregateFixtureThen<T> : Stage<AggregateFixtureThen<T>>() {
     resultValidator.expectExceptionMessage(matcher)
   }
 
+  @As("expect exception: $")
+  fun expectException(@Quoted exception: Class<out Throwable>) = execute {
+    resultValidator.expectException(exception)
+  }
+
+  @As("expect matching exception ")
+  fun expectMatchingException(matcher: Matcher<*>) = execute {
+    resultValidator.expectException(matcher)
+  }
+
   @As("expect successful handler execution")
   fun expectSuccessfulHandlerExecution() = execute {
     resultValidator.expectSuccessfulHandlerExecution()
   }
+
+  @As("expect message payload")
+  fun expectResultMessagePayload(payload: Any) = execute {
+    resultValidator.expectResultMessagePayload(payload)
+  }
+
+  @As("expect message payload matching")
+  fun expectResultMessagePayloadMatching(matcher: Matcher<*>) = execute {
+    resultValidator.expectResultMessagePayloadMatching(matcher)
+  }
+
+  @As("expect result message")
+  fun expectResultMessage(message: CommandResultMessage<*>) = execute {
+    resultValidator.expectResultMessage(message)
+  }
+
+  @As("expect result message matching")
+  fun expectResultMessageMatching(matcher: Matcher<CommandResultMessage<*>>) = execute {
+    resultValidator.expectResultMessageMatching(matcher)
+  }
+
+  fun expectDeadlinesMet(expected: Any) = execute {
+    resultValidator.expectDeadlinesMet(expected)
+  }
+
+  fun expectDeadlinesMetMatching(matcher: Matcher<out MutableList<in DeadlineMessage<*>>>) = execute {
+    resultValidator.expectDeadlinesMetMatching(matcher)
+  }
+
+  fun expectNoScheduledDeadlines() = execute {
+    resultValidator.expectNoScheduledDeadlines()
+  }
+
+  fun expectScheduledDeadline(duration: Duration, deadline: Any) = execute {
+    resultValidator.expectScheduledDeadline(duration, deadline)
+  }
+
+  fun expectScheduledDeadlineMatching(duration: Duration, matcher: Matcher<in DeadlineMessage<*>>) = execute {
+    resultValidator.expectScheduledDeadlineMatching(duration, matcher)
+  }
+
+  fun expectScheduledDeadline(instant: Instant, deadline: Any) = execute {
+    resultValidator.expectScheduledDeadline(instant, deadline)
+  }
+
+  fun expectScheduledDeadlineMatching(instant: Instant, matcher: Matcher<in DeadlineMessage<*>>) = execute {
+    resultValidator.expectScheduledDeadlineMatching(instant, matcher)
+  }
+
 
   private fun execute(block: () -> ResultValidator<T>) = self().apply { resultValidator = block.invoke() }!!
 }
