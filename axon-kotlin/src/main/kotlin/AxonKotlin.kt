@@ -1,8 +1,5 @@
 package io.toolisticon.addons.axon.kotlin
 
-import org.axonframework.commandhandling.CommandCallback
-import org.axonframework.commandhandling.CommandMessage
-import org.axonframework.commandhandling.gateway.CommandGateway
 import org.axonframework.serialization.SimpleSerializedType
 import org.axonframework.serialization.upcasting.event.IntermediateEventRepresentation
 import org.axonframework.serialization.upcasting.event.SingleEventUpcaster
@@ -11,7 +8,7 @@ import kotlin.reflect.KClass
 // empty
 
 
-fun <C> CommandGateway.send(cmd: C) = this.send<Any>(cmd)
+//fun <C> CommandGateway.send(cmd: C) = this.send<Any>(cmd)
 
 //
 ///**

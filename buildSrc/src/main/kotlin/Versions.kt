@@ -1,6 +1,13 @@
 import org.gradle.kotlin.dsl.embeddedKotlinVersion
 
 object Versions {
+
+  val release = mapOf(
+    "axon-jgiven" to "0.1.0-SNAPSHOT",
+    "axon-kotlin" to "0.1.0-SNAPSHOT"
+  )
+
+  val bintray = "1.8.4"
   val kotlin = embeddedKotlinVersion
   val axon = "4.0.3"
 

@@ -1,5 +1,6 @@
 import _buildsrc.axon
 import _buildsrc.junit5
+import _buildsrc.releaseVersion
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -8,13 +9,14 @@ plugins {
   id("org.jetbrains.kotlin.plugin.allopen") version Versions.kotlin
   `java-library`
   id("com.tngtech.jgiven.gradle-plugin") version Versions.jgiven
+  id("com.jfrog.bintray") version Versions.bintray
 
   id("org.jetbrains.dokka") version "0.9.17"
 
   `maven-publish`
 }
 
-version = "0.1.0-SNAPSHOT"
+releaseVersion()
 
 apply {
   // repos set in /gradle
@@ -84,9 +86,6 @@ tasks {
 publishing {
   publications {
     create<MavenPublication>("maven") {
-      artifactId = "axon-jgiven"
-      version = "0.1.0-SNAPSHOT"
-
       from(components["java"])
     }
   }

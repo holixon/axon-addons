@@ -17,7 +17,7 @@ class GiftcardSummariesProjection(
   }
 
   @QueryHandler
-  @Suppress("unused")
+  @Suppress("UNUSED_PARAMETER")
   fun on(query: FindAll) = summaries.values.toList()
 
 }

@@ -3,6 +3,7 @@ package io.toolisticon.addons.axon.jgiven.aggregate
 import com.tngtech.jgiven.Stage
 import com.tngtech.jgiven.annotation.*
 import io.toolisticon.addons.axon.jgiven.AxonStage
+import org.axonframework.eventhandling.EventMessage
 import org.axonframework.test.aggregate.ResultValidator
 import org.hamcrest.Matcher
 import org.hamcrest.MatcherAssert
