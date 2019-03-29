@@ -21,9 +21,9 @@ class EmbeddedInMemoryEventStore(
 
   @Suppress("UNCHECKED_CAST")
   val events: NavigableMap<TrackingToken, TrackedEventMessage<*>> by lazy {
-    val eventsField = InMemoryEventStorageEngine::class.java.getDeclaredField("events")
-    eventsField.isAccessible = true
-    eventsField.get(storageEngine()) as NavigableMap<TrackingToken, TrackedEventMessage<*>>
+    InMemoryEventStorageEngine::class.java.getDeclaredField("events")
+      .apply { isAccessible = true }
+      .get(storageEngine()) as NavigableMap<TrackingToken, TrackedEventMessage<*>>
   }
 
   override fun toString(): String = events.let {
