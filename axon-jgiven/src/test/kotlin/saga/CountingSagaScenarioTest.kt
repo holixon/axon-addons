@@ -12,14 +12,15 @@ class CountingSagaScenarioTest : SagaFixtureScenarioTest<CountingSaga>() {
 
   companion object {
     const val aggregateId = "1"
-    val START = SagaEvent.Start(aggregateId)
-    val STOP = SagaEvent.Stop(aggregateId)
-    val COUNT = SagaEvent.Increment(aggregateId, 1)
+    val START = SagaEvent.Started(aggregateId)
+    val STOP = SagaEvent.Stopped(aggregateId)
+    val COUNT = SagaEvent.Incremented(aggregateId, 1)
   }
 
   @ProvidedScenarioState
   private val fixture : SagaTestFixture<CountingSaga> = SagaTestFixture(CountingSaga::class.java).apply {
     withTransienceCheckDisabled()
+
   }
 
   @Test
@@ -65,7 +66,17 @@ class CountingSagaScenarioTest : SagaFixtureScenarioTest<CountingSaga>() {
 
     THEN
       .expectActiveSagas(1)
+  }
 
+  @Test
+  internal fun `expect commands`() {
+    GIVEN
+      .aggregatePublishedEvent(aggregateId, START)
 
+    WHEN
+      .aggregatePublishes(aggregateId, COUNT)
+
+    THEN
+      .expectDispatchedCommand(SagaCommand.IncrementAggregate(aggregateId))
   }
 }

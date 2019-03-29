@@ -33,6 +33,8 @@ dependencies {
   implementation("com.tngtech.jgiven:jgiven-junit5:${Versions.jgiven}")
   implementation("org.hamcrest:hamcrest-core:2.1")
 
+  testImplementation("javax.inject:javax.inject:1")
+
 
   testImplementation(junit5("api"))
   testRuntimeOnly(junit5("engine"))
