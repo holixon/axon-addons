@@ -9,11 +9,11 @@ object Versions {
 
   val bintray = "1.8.4"
   val kotlin = embeddedKotlinVersion
-  val axon = "4.1"
+  val axon = "4.1.1"
 
   val mapdb = "3.0.7"
-  val klogging = "1.6.22"
+  val klogging = "1.6.26"
 
   val jgiven = "0.17.1"
-  val junit5 = "5.3.2"
+  val junit5 = "5.4.1"
 }

@@ -17,7 +17,7 @@ class CountingSaga {
   @StartSaga
   @SagaEventHandler(associationProperty = SagaEvent.associationProperty)
   fun on(event: SagaEvent.Started) {
-
+    println(event)
   }
 
   @SagaEventHandler(associationProperty = SagaEvent.associationProperty)
@@ -29,10 +29,11 @@ class CountingSaga {
 
   @EndSaga
   @SagaEventHandler(associationProperty = SagaEvent.associationProperty)
-  fun on(event: SagaEvent.Stopped) {}
+  fun on(event: SagaEvent.Stopped) {
+    println(event)
+  }
 
 }
-
 
 sealed class SagaEvent(open val id: String) {
   companion object {
@@ -40,14 +41,10 @@ sealed class SagaEvent(open val id: String) {
   }
 
   data class Started(override val id: String) : SagaEvent(id)
-
   data class Incremented(override val id: String, val num: Int) : SagaEvent(id)
-
   data class Stopped(override val id: String) : SagaEvent(id)
 }
 
 sealed class SagaCommand(open val id: String) {
-
   data class IncrementAggregate(override val id: String) : SagaCommand(id)
-
 }

@@ -67,16 +67,16 @@ class AggregateFixtureGiven<T> : Stage<AggregateFixtureGiven<T>>() {
 
   fun timeAdvancesTo(instant: Instant) {
     if (!::testExecutor.isInitialized)
-      fixture.andThenTimeAdvancesTo(instant)
+      fixture.whenThenTimeAdvancesTo(instant)
     else
-      testExecutor.andThenTimeAdvancesTo(instant)
+      testExecutor.whenThenTimeAdvancesTo(instant)
   }
 
   fun timeElapses(duration: Duration) {
     if (!::testExecutor.isInitialized)
-      fixture.andThenTimeElapses(duration)
+      fixture.whenThenTimeElapses(duration)
     else
-      testExecutor.andThenTimeElapses(duration)
+      testExecutor.whenThenTimeElapses(duration)
   }
 
   private fun execute(block: () -> TestExecutor<T>) = self().apply {
