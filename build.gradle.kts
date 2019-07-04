@@ -5,13 +5,12 @@ plugins {
   `maven-publish`
 }
 
-apply {
-  // repos set in /gradle
-  from("gradle/repositories.gradle.kts")
-}
-
 allprojects {
   group = "io.toolisticon.addons.axon"
+
+  apply {
+    from("${rootProject.rootDir}/gradle/repositories.gradle.kts")
+  }
 }
 
 //

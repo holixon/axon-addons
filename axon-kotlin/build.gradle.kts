@@ -14,10 +14,6 @@ plugins {
   `maven-publish`
 }
 
-apply {
-  // repos set in /gradle
-  from("../gradle/repositories.gradle.kts")
-}
 
 releaseVersion()
 

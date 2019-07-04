@@ -11,10 +11,7 @@ plugins {
   id("org.jetbrains.dokka") version "0.9.17"
 }
 
-apply {
-  // repos set in /gradle
-  from("../../gradle/repositories.gradle.kts")
-}
+
 
 dependencies {
   implementation(kotlin("stdlib-jdk8"))

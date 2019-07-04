@@ -18,11 +18,6 @@ plugins {
 
 releaseVersion()
 
-apply {
-  // repos set in /gradle
-  from("../gradle/repositories.gradle.kts")
-}
-
 dependencies {
 
 
