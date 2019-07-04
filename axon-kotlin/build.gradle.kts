@@ -5,7 +5,7 @@ import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  kotlin("jvm") version Versions.kotlin
+  kotlin("jvm")
   //id("org.jetbrains.kotlin.plugin.allopen") version Versions.kotlin
   `java-library`
 

@@ -1,4 +1,5 @@
 plugins {
+  kotlin("jvm") version Versions.kotlin apply false
   base
   idea
   `maven-publish`
@@ -30,5 +31,12 @@ dependencies {
   // Make the root project archives configuration depend on every sub-project
   subprojects.forEach {
     archives(it)
+  }
+}
+
+idea {
+  project {
+    jdkName = Versions.java
+    vcs = "Git"
   }
 }
