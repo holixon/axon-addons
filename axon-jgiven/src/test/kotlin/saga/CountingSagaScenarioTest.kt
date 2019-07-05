@@ -20,7 +20,6 @@ class CountingSagaScenarioTest : SagaFixtureScenarioTest<CountingSaga>() {
   @ProvidedScenarioState
   private val fixture : SagaTestFixture<CountingSaga> = SagaTestFixture(CountingSaga::class.java).apply {
     withTransienceCheckDisabled()
-
   }
 
   @Test

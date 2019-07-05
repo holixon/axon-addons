@@ -34,3 +34,10 @@ dependencies {
     archives(it)
   }
 }
+
+idea {
+  project {
+    jdkName = Versions.java
+    vcs = "Git"
+  }
+}
