@@ -4,17 +4,13 @@ import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  kotlin("jvm") version Versions.kotlin
+  kotlin("jvm")
   //id("org.jetbrains.kotlin.plugin.allopen") version Versions.kotlin
   `java-library`
 
   id("org.jetbrains.dokka") version "0.9.17"
 }
 
-apply {
-  // repos set in /gradle
-  from("../../gradle/repositories.gradle.kts")
-}
 
 dependencies {
   implementation(kotlin("stdlib-jdk8"))

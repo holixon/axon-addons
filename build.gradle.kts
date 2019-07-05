@@ -2,15 +2,17 @@ plugins {
   base
   idea
   `maven-publish`
-}
 
-apply {
-  // repos set in /gradle
-  from("gradle/repositories.gradle.kts")
+  kotlin("jvm") version Versions.kotlin apply false
 }
 
 allprojects {
   group = "io.toolisticon.addons.axon"
+  version = "0.1.0-SNAPSHOT"
+
+  apply {
+    from("${rootProject.rootDir}/gradle/repositories.gradle.kts")
+  }
 }
 
 //

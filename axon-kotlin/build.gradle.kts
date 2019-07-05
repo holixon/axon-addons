@@ -5,7 +5,7 @@ import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  kotlin("jvm") version Versions.kotlin
+  kotlin("jvm")
   //id("org.jetbrains.kotlin.plugin.allopen") version Versions.kotlin
   `java-library`
 
@@ -14,10 +14,6 @@ plugins {
   `maven-publish`
 }
 
-apply {
-  // repos set in /gradle
-  from("../gradle/repositories.gradle.kts")
-}
 
 releaseVersion()
 
@@ -34,8 +30,6 @@ dependencies {
 
   testImplementation("org.slf4j:slf4j-simple:1.7.25")
 }
-
-
 
 tasks {
   withType<KotlinCompile> {
