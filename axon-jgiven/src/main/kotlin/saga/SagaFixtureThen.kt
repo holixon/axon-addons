@@ -5,7 +5,7 @@ import com.tngtech.jgiven.Stage
 import com.tngtech.jgiven.annotation.As
 import com.tngtech.jgiven.annotation.ExpectedScenarioState
 import com.tngtech.jgiven.annotation.Table
-import io.toolisticon.addons.axon.jgiven.AxonStage
+import io.toolisticon.addons.jgiven.JGivenKotlinStage
 import org.axonframework.deadline.DeadlineMessage
 import org.axonframework.eventhandling.EventMessage
 import org.axonframework.test.saga.FixtureExecutionResult
@@ -14,7 +14,7 @@ import java.time.Duration
 import java.time.Instant
 
 
-@AxonStage
+@JGivenKotlinStage
 class SagaFixtureThen<T> : Stage<SagaFixtureThen<T>>() {
 
   @ExpectedScenarioState(required = true)

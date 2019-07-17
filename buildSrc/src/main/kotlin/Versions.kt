@@ -9,6 +9,11 @@ object Versions {
     "axon-jgiven" to "0.1.0-SNAPSHOT",
     "axon-kotlin" to "0.1.0-SNAPSHOT"
   )
+
+  object Plugins {
+    val githubRelease = "2.2.9"
+  }
+
   val bintray = "1.8.4"
   val axon = "4.1.1"
 

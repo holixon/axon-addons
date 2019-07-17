@@ -2,12 +2,12 @@ package io.toolisticon.addons.axon.jgiven.saga
 
 import com.tngtech.jgiven.Stage
 import com.tngtech.jgiven.annotation.*
-import io.toolisticon.addons.axon.jgiven.AxonStage
+import io.toolisticon.addons.jgiven.JGivenKotlinStage
 import org.axonframework.test.saga.FixtureExecutionResult
 import org.axonframework.test.saga.SagaTestFixture
 import org.axonframework.test.saga.WhenState
 
-@AxonStage
+@JGivenKotlinStage
 class SagaFixtureGiven<T> : Stage<SagaFixtureGiven<T>>() {
 
 

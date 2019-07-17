@@ -6,8 +6,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
   kotlin("jvm")
-  id("org.jetbrains.kotlin.plugin.allopen") version Versions.kotlin
   `java-library`
+  id("org.jetbrains.kotlin.plugin.allopen") version Versions.kotlin
   id("com.tngtech.jgiven.gradle-plugin") version Versions.jgiven
   id("com.jfrog.bintray") version Versions.bintray
 
@@ -19,13 +19,12 @@ plugins {
 releaseVersion()
 
 dependencies {
-
+  api("io.toolisticon.addons.jgiven:jgiven-kotlin:0.4.1")
+  api("com.tngtech.jgiven:jgiven-junit5:${Versions.jgiven}")
+  api(axon("test"))
 
   implementation(kotlin("stdlib-jdk8"))
 
-
-  implementation(axon("test"))
-  implementation("com.tngtech.jgiven:jgiven-junit5:${Versions.jgiven}")
   implementation("org.hamcrest:hamcrest-core:2.1")
 
   testImplementation("javax.inject:javax.inject:1")
@@ -39,7 +38,7 @@ dependencies {
 }
 
 allOpen {
-  annotation("io.toolisticon.addons.axon.jgiven.AxonStage")
+  annotation("io.toolisticon.addons.jgiven.JGivenKotlinStage")
 }
 
 val sourcesJar by tasks.registering(Jar::class) {

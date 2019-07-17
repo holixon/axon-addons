@@ -2,11 +2,11 @@ package io.toolisticon.addons.axon.jgiven.aggregate
 
 import com.tngtech.jgiven.Stage
 import com.tngtech.jgiven.annotation.*
-import io.toolisticon.addons.axon.jgiven.AxonStage
+import io.toolisticon.addons.jgiven.JGivenKotlinStage
 import org.axonframework.test.aggregate.ResultValidator
 import org.axonframework.test.aggregate.TestExecutor
 
-@AxonStage
+@JGivenKotlinStage
 class AggregateFixtureWhen<T> : Stage<AggregateFixtureWhen<T>>() {
 
   @ExpectedScenarioState(required = true)

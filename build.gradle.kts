@@ -4,6 +4,8 @@ plugins {
   `maven-publish`
 
   kotlin("jvm") version Versions.kotlin apply false
+
+  id("com.github.breadmoirai.github-release") version Versions.Plugins.githubRelease
 }
 
 allprojects {
@@ -40,4 +42,11 @@ idea {
     jdkName = Versions.java
     vcs = "Git"
   }
+}
+
+githubRelease {
+  setToken(properties["github.token"] as String)
+  setPrerelease(true)
+  setOverwrite(true)
+  setPrerelease((project.version as String).endsWith("-SNAPSHOT"))
 }

@@ -5,13 +5,13 @@ import com.tngtech.jgiven.annotation.As
 import com.tngtech.jgiven.annotation.ExpectedScenarioState
 import com.tngtech.jgiven.annotation.ProvidedScenarioState
 import com.tngtech.jgiven.annotation.Quoted
-import io.toolisticon.addons.axon.jgiven.AxonStage
+import io.toolisticon.addons.jgiven.JGivenKotlinStage
 import org.axonframework.test.saga.FixtureExecutionResult
 import org.axonframework.test.saga.WhenState
 import java.time.Duration
 import java.time.Instant
 
-@AxonStage
+@JGivenKotlinStage
 class SagaFixtureWhen<T> : Stage<SagaFixtureWhen<T>>() {
 
   @ExpectedScenarioState(required = true)

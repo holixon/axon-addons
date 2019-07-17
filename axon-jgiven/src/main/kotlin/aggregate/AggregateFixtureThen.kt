@@ -2,7 +2,7 @@ package io.toolisticon.addons.axon.jgiven.aggregate
 
 import com.tngtech.jgiven.Stage
 import com.tngtech.jgiven.annotation.*
-import io.toolisticon.addons.axon.jgiven.AxonStage
+import io.toolisticon.addons.jgiven.JGivenKotlinStage
 import org.axonframework.commandhandling.CommandResultMessage
 import org.axonframework.deadline.DeadlineMessage
 import org.axonframework.eventhandling.EventMessage
@@ -13,7 +13,7 @@ import java.time.Duration
 import java.time.Instant
 
 
-@AxonStage
+@JGivenKotlinStage
 class AggregateFixtureThen<T> : Stage<AggregateFixtureThen<T>>() {
 
   @ExpectedScenarioState(required = true)
