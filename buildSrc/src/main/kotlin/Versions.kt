@@ -12,9 +12,10 @@ object Versions {
 
   object Plugins {
     val githubRelease = "2.2.9"
+    val dokka = "0.9.17"
+    val bintray = "1.8.4"
   }
 
-  val bintray = "1.8.4"
   val axon = "4.1.1"
 
   val mapdb = "3.0.7"

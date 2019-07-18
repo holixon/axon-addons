@@ -10,7 +10,6 @@ import org.axonframework.test.saga.WhenState
 @JGivenKotlinStage
 class SagaFixtureGiven<T> : Stage<SagaFixtureGiven<T>>() {
 
-
   @ExpectedScenarioState(required = true)
   lateinit var fixture: SagaTestFixture<T>
 
