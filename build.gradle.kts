@@ -12,7 +12,7 @@ plugins {
 
 allprojects {
   group = "io.toolisticon.addons.axon"
-  version = "0.1.1"
+  version = "0.1.2-SNAPSHOT"
 
   apply {
     from("${rootProject.rootDir}/gradle/repositories.gradle.kts")
