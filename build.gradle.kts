@@ -12,7 +12,7 @@ plugins {
 
 allprojects {
   group = "io.toolisticon.addons.axon"
-  version = "0.2.0-SNAPSHOT"
+  version = "0.1.1"
 
   apply {
     from("${rootProject.rootDir}/gradle/repositories.gradle.kts")
@@ -36,7 +36,6 @@ idea {
 githubRelease {
   setOwner("toolisticon")
   setToken(properties["github.token"] as String)
-  setPrerelease(true)
   setOverwrite(true)
   setPrerelease((project.version as String).endsWith("-SNAPSHOT"))
   setVersion(project.version)

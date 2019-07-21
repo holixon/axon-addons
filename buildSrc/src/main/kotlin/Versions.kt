@@ -6,7 +6,7 @@ object Versions {
   val java = "1.8"
   val axon = "4.1.2"
 
-  val jgivenAddons = "0.5.0"
+  val jgivenAddons = "0.5.1"
 
   object Plugins {
     val githubRelease = "2.2.9"
