@@ -1,6 +1,5 @@
 import _buildsrc.axon
 import _buildsrc.junit5
-import _buildsrc.releaseVersion
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -13,9 +12,6 @@ plugins {
 
   `maven-publish`
 }
-
-
-releaseVersion()
 
 dependencies {
   implementation(kotlin("stdlib-jdk8"))

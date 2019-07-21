@@ -1,6 +1,5 @@
 import _buildsrc.axon
 import _buildsrc.junit5
-import _buildsrc.releaseVersion
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.util.*
@@ -19,10 +18,8 @@ plugins {
   id("org.jetbrains.kotlin.plugin.allopen") version Versions.kotlin
 }
 
-releaseVersion()
-
 dependencies {
-  api("io.toolisticon.addons.jgiven:jgiven-kotlin:0.4.1")
+  api("io.toolisticon.addons.jgiven:jgiven-kotlin:${Versions.jgivenAddons}")
   api("com.tngtech.jgiven:jgiven-junit5:${Versions.jgiven}")
   api(axon("test"))
 

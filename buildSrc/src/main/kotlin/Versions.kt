@@ -4,11 +4,9 @@ object Versions {
 
   val kotlin = embeddedKotlinVersion
   val java = "1.8"
+  val axon = "4.1.2"
 
-  val release = mapOf(
-    "axon-jgiven" to "0.1.0-SNAPSHOT",
-    "axon-kotlin" to "0.1.0-SNAPSHOT"
-  )
+  val jgivenAddons = "0.5.0"
 
   object Plugins {
     val githubRelease = "2.2.9"
@@ -16,7 +14,6 @@ object Versions {
     val bintray = "1.8.4"
   }
 
-  val axon = "4.1.1"
 
   val mapdb = "3.0.7"
   val klogging = "1.6.26"
