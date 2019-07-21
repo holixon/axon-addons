@@ -1,3 +1,4 @@
+@file:Suppress("unused")
 package io.toolisticon.addons.axon.jgiven.saga
 
 import com.tngtech.jgiven.Stage
