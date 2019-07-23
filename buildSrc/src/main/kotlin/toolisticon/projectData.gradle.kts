@@ -56,6 +56,8 @@ fun EnvironmentPropertyEnum.read(): String {
     ?: ProjectDataExtensions.UNDEF
 }
 
+
+
 /**
  * stores the resolved ProjectData on project.extra.
  * It can be accessed anywhere using
@@ -65,7 +67,7 @@ fun EnvironmentPropertyEnum.read(): String {
 project.extra[ProjectDataExtensions.key] = ProjectData(
   github = GithubData(
     token = EnvironmentPropertyEnum.GITHUB_TOKEN.read(),
-    organization = EnvironmentPropertyEnum.GITHUB_ORGANIZATION.read(),
+    organization = stringProperty("github.organization"),
     repository = rootProject.name,
     description = EnvironmentPropertyEnum.GITHUB_DESCRIPTION.read()
   ),
@@ -86,8 +88,13 @@ tasks {
   register(ProjectDataExtensions.key) {
     group = "toolisticon"
     description = "print out all projectData for module"
+
+    val projectData = project.extra[ProjectDataExtensions.key] as ProjectData
     doLast {
-      println(project.extra[ProjectDataExtensions.key] as ProjectData)
+      println("""
+        Module: ${project.name}
+        $projectData
+      """.trimIndent())
     }
   }
 }
@@ -99,6 +106,7 @@ enum class EnvironmentPropertyEnum {
   POM_VERSION,
   GITHUB_TOKEN,
   GITHUB_ORGANIZATION,
+  GITHUB_REPOSITORY,
   GITHUB_DESCRIPTION,
   BINTRAY_USER,
   BINTRAY_KEY;
@@ -109,3 +117,5 @@ enum class EnvironmentPropertyEnum {
     name.toLowerCase().replace(regex = Regex("_([a-z])")) { it.groupValues[1].toUpperCase() }
   )
 }
+
+fun stringProperty(key: String) = properties[key] as String

@@ -6,9 +6,6 @@ plugins {
 
   `maven-publish`
 
-
-  id("com.github.breadmoirai.github-release") 
-
 }
 
 allprojects {
@@ -29,14 +26,5 @@ dependencies {
   subprojects.forEach {
     archives(it)
   }
-}
-
-
-githubRelease {
-  setOwner("toolisticon")
-  setToken(properties["github.token"] as String)
-  setOverwrite(true)
-  setPrerelease((project.version as String).endsWith("-SNAPSHOT"))
-  setVersion(project.version)
 }
 

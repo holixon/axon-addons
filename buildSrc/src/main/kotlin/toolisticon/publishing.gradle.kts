@@ -14,9 +14,10 @@ with(extensions) {
 
   getByType<GithubReleaseExtension>().apply {
     setOwner(projectData.github.organization)
+    setRepo(projectData.github.repository)
     setToken(projectData.github.token)
     setOverwrite(projectData.version.isSnapShot)
     setPrerelease(projectData.version.isSnapShot)
-    setVersion(projectData.version)
+    setVersion(projectData.version.value)
   }
 }
