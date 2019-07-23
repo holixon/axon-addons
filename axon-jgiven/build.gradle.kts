@@ -2,7 +2,9 @@ import _buildsrc.axon
 import _buildsrc.junit5
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import toolisticon.ProjectData_gradle
 import java.util.*
+import toolisticon.ProjectData_gradle.ProjectDataExtensions.toolisticonProjectData
 
 plugins {
   kotlin("jvm")
@@ -10,13 +12,17 @@ plugins {
   id("com.tngtech.jgiven.gradle-plugin") version Versions.jgiven
 
   id("com.jfrog.bintray") version Versions.Plugins.bintray
-  id("org.jetbrains.dokka") version Versions.Plugins.dokka
+  //id("org.jetbrains.dokka") version Versions.Plugins.dokka
+
+  id("toolisticon.publishing")
 
   `maven-publish`
 
 
   id("org.jetbrains.kotlin.plugin.allopen") version Versions.kotlin
 }
+
+description = "Enhancing axon-test with jgiven stages support"
 
 dependencies {
   api("io.toolisticon.addons.jgiven:jgiven-kotlin:${Versions.jgivenAddons}")
@@ -88,10 +94,13 @@ publishing {
   }
 }
 
+
 bintray {
-  user = properties["bintrayUser"] as String
-  key = properties["bintrayKey"] as String
-  publish = true
+  with(toolisticonProjectData) {
+    user = bintray.user
+    key = bintray.key
+    publish = true
+  }
 
   setPublications(project.name)
 
@@ -108,8 +117,9 @@ bintray {
     githubReleaseNotesFile = Github.readme
 
     version.apply {
-      name = project.version as String
-      vcsTag = project.version as String
+      val version = (project.version as ProjectData_gradle.VersionData).value
+      name = version
+      vcsTag = version
       desc = Github.pomDesc
       released = Date().toString()
     }

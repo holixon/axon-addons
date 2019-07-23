@@ -8,7 +8,7 @@ plugins {
   //id("org.jetbrains.kotlin.plugin.allopen") version Versions.kotlin
   `java-library`
 
-  id("org.jetbrains.dokka") version "0.9.17"
+  id("org.jetbrains.dokka") //version "0.9.17"
 }
 
 

@@ -5,8 +5,8 @@ plugins {
 }
 
 apply {
-  // repos set in /gradle
   from("../gradle/repositories.gradle.kts")
+  from("src/main/kotlin/toolisticon/dependencies.txt")
 }
 
 kotlinDslPluginOptions {

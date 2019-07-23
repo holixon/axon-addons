@@ -1,18 +1,23 @@
-plugins {
-  base
-  idea
-  `maven-publish`
+import toolisticon.ProjectData_gradle.ProjectDataExtensions.toolisticonProjectData
 
+plugins {
+  id("toolisticon.base")
   kotlin("jvm") version Versions.kotlin apply false
 
-  id("com.github.breadmoirai.github-release") version Versions.Plugins.githubRelease
+  `maven-publish`
 
-  `build-scan`
+
+  id("com.github.breadmoirai.github-release") 
+
 }
 
 allprojects {
-  group = "io.toolisticon.addons.axon"
-  version = "0.1.2-SNAPSHOT"
+  apply {
+    plugin("toolisticon.projectData")
+  }
+
+  group = toolisticonProjectData.pom.groupId
+  version = toolisticonProjectData.pom.version
 
   apply {
     from("${rootProject.rootDir}/gradle/repositories.gradle.kts")
@@ -26,12 +31,6 @@ dependencies {
   }
 }
 
-idea {
-  project {
-    jdkName = Versions.java
-    vcs = "Git"
-  }
-}
 
 githubRelease {
   setOwner("toolisticon")
@@ -41,9 +40,3 @@ githubRelease {
   setVersion(project.version)
 }
 
-
-buildScan {
-  termsOfServiceUrl = "https://gradle.com/terms-of-service"
-  termsOfServiceAgree = "yes"
-  publishAlways()
-}
