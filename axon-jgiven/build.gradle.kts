@@ -3,6 +3,7 @@ import _buildsrc.junit5
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.util.*
+import kotlin.IllegalStateException
 
 plugins {
   kotlin("jvm")
@@ -60,7 +61,7 @@ tasks {
   }
 }
 
-  
+
 val dokkaJar by tasks.creating(Jar::class) {
   group = JavaBasePlugin.DOCUMENTATION_GROUP
   description = "Assembles Kotlin docs with Dokka"
@@ -89,8 +90,8 @@ publishing {
 }
 
 bintray {
-  user = properties["bintrayUser"] as String
-  key = properties["bintrayKey"] as String
+  user = getPropertySafe("bintrayUser")
+  key = getPropertySafe("bintrayKey")
   publish = true
 
   setPublications(project.name)
@@ -112,6 +113,22 @@ bintray {
       vcsTag = project.version as String
       desc = Github.pomDesc
       released = Date().toString()
+    }
+  }
+}
+
+fun getPropertySafe(propertyName: String, fallbackToEmpty: Boolean = true): String {
+  val rawValue = properties[propertyName]
+  return if (rawValue == null) {
+    if (fallbackToEmpty) {
+      return ""
+    }
+    throw IllegalStateException("Property $propertyName MUST be initialized.")
+  } else {
+    if (rawValue is String) {
+      rawValue
+    } else {
+      rawValue.toString()
     }
   }
 }
