@@ -32,7 +32,7 @@ idea {
 
 githubRelease {
   setOwner("toolisticon")
-  setToken(properties["github.token"] as String)
+  setToken(getPropertySafe("github.token"))
   setOverwrite(true)
   setPrerelease((project.version as String).endsWith("-SNAPSHOT"))
   setVersion(project.version)
@@ -43,4 +43,21 @@ buildScan {
   termsOfServiceUrl = "https://gradle.com/terms-of-service"
   termsOfServiceAgree = "yes"
   publishAlways()
+}
+
+
+fun getPropertySafe(propertyName: String, fallbackToEmpty: Boolean = true): String {
+  val rawValue = properties[propertyName]
+  return if (rawValue == null) {
+    if (fallbackToEmpty) {
+      return ""
+    }
+    throw IllegalStateException("Property $propertyName MUST be initialized.")
+  } else {
+    if (rawValue is String) {
+      rawValue
+    } else {
+      rawValue.toString()
+    }
+  }
 }
