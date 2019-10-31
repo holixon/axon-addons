@@ -6,6 +6,7 @@ import java.util.*
 
 plugins {
   kotlin("jvm")
+  kotlin("plugin.allopen") version Versions.kotlin
   `java-library`
   id("com.tngtech.jgiven.gradle-plugin") version Versions.jgiven
 
@@ -13,9 +14,6 @@ plugins {
   id("org.jetbrains.dokka") version Versions.Plugins.dokka
 
   `maven-publish`
-
-
-  id("org.jetbrains.kotlin.plugin.allopen") version Versions.kotlin
 }
 
 dependencies {
@@ -60,7 +58,7 @@ tasks {
   }
 }
 
-  
+
 val dokkaJar by tasks.creating(Jar::class) {
   group = JavaBasePlugin.DOCUMENTATION_GROUP
   description = "Assembles Kotlin docs with Dokka"
