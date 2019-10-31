@@ -2,17 +2,14 @@ plugins {
   base
   idea
   `maven-publish`
+  `build-scan`
 
   kotlin("jvm") version Versions.kotlin apply false
-
   id("com.github.breadmoirai.github-release") version Versions.Plugins.githubRelease
-
-  `build-scan`
 }
 
 allprojects {
   group = "io.toolisticon.addons.axon"
-  version = "0.1.2-SNAPSHOT"
 
   apply {
     from("${rootProject.rootDir}/gradle/repositories.gradle.kts")
