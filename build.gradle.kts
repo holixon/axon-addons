@@ -1,11 +1,15 @@
+import setup.ProjectSetup
+
 plugins {
   base
   idea
-  `maven-publish`
   `build-scan`
 
-  kotlin("jvm") version Versions.kotlin apply false
-  id("com.github.breadmoirai.github-release") version Versions.Plugins.githubRelease
+  //id("org.jetbrains.dokka") version Versions.Gradle.dokka apply false
+
+
+//  `maven-publish`
+//  id("com.github.breadmoirai.github-release") version Versions.Gradle.githubRelease
 }
 
 allprojects {
@@ -14,6 +18,12 @@ allprojects {
   apply {
     from("${rootProject.rootDir}/gradle/repositories.gradle.kts")
   }
+}
+
+subprojects {
+  val projectModule = ProjectSetup.modules[this.name] ?: return@subprojects
+
+  projectModule.configure(this) // TODO: receiver
 }
 
 dependencies {
@@ -25,39 +35,22 @@ dependencies {
 
 idea {
   project {
-    jdkName = Versions.java
+    jdkName = Versions.Build.java
     vcs = "Git"
   }
 }
 
-githubRelease {
-  setOwner("toolisticon")
-  setToken(getPropertySafe("github.token"))
-  setOverwrite(true)
-  setPrerelease((project.version as String).endsWith("-SNAPSHOT"))
-  setVersion(project.version)
-}
-
-
-buildScan {
-  termsOfServiceUrl = "https://gradle.com/terms-of-service"
-  termsOfServiceAgree = "yes"
-  publishAlways()
-}
-
-
-fun getPropertySafe(propertyName: String, fallbackToEmpty: Boolean = true): String {
-  val rawValue = properties[propertyName]
-  return if (rawValue == null) {
-    if (fallbackToEmpty) {
-      return ""
-    }
-    throw IllegalStateException("Property $propertyName MUST be initialized.")
-  } else {
-    if (rawValue is String) {
-      rawValue
-    } else {
-      rawValue.toString()
-    }
-  }
-}
+//githubRelease {
+//  setOwner("toolisticon")
+//  setToken(propertySafe("github.token"))
+//  setOverwrite(true)
+//  setPrerelease((project.version as String).endsWith("-SNAPSHOT"))
+//  setVersion(project.version)
+//}
+//
+//
+//buildScan {
+//  termsOfServiceUrl = "https://gradle.com/terms-of-service"
+//  termsOfServiceAgree = "yes"
+//  publishAlways()
+//}

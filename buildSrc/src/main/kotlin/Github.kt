@@ -13,8 +13,8 @@ object Github {
 
   val readme = "README.md"
 
-  val pomLicenseName = "The 3-Clause BSD License"
-  val pomLicenseUrl = "https://opensource.org/licenses/BSD-3-Clause"
+  val pomLicenseName = "The Apache 2 License"
+  val pomLicenseUrl = "https://www.apache.org/licenses/LICENSE-2.0"
   val pomLicenseDist = "repo"
 
   val pomDeveloperId = "jangalinski"
