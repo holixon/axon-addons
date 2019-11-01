@@ -3,7 +3,7 @@
 [![Build Status](https://api.travis-ci.org/toolisticon/axon-addons.svg)](https://travis-ci.org/toolisticon/axon-addons)
 [![sponsored](https://img.shields.io/badge/sponsoredBy-Holisticon-RED.svg)](https://holisticon.de/)
 [![release](https://img.shields.io/badge/jcenter-0.1.1-BLUE.svg)](https://bintray.com/toolisticon/maven/axon-addons/)
-[![License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)
+[![License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](./LICENSE)
 
 Add-ons for Axon Framework provides a set of libraries extending the framework with useful tools.
 
