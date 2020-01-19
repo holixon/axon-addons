@@ -6,6 +6,7 @@ import io.toolisticon.addons.axon.examples.giftcard.api.GiftcardCommand.RedeemCo
 import io.toolisticon.addons.axon.examples.giftcard.api.GiftcardEvent.IssuedEvent
 import io.toolisticon.addons.axon.examples.giftcard.api.GiftcardEvent.RedeemedEvent
 import io.toolisticon.addons.axon.examples.giftcard.domain.GiftcardAggregate
+import io.toolisticon.addons.axon.jgiven.aggregate.AggregateFixtureScenarioTest
 import io.toolisticon.addons.jgiven.AND
 import io.toolisticon.addons.jgiven.GIVEN
 import io.toolisticon.addons.jgiven.THEN

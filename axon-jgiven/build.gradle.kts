@@ -25,7 +25,7 @@ dependencies {
 
   implementation("org.hamcrest:hamcrest-core:2.1")
   testImplementation("javax.inject:javax.inject:1")
-  testImplementation(project(":giftcard-sample"))
+  testImplementation(project(":examples:giftcard-sample"))
 }
 
 tasks {

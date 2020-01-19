@@ -8,7 +8,6 @@ plugins {
   id("maven-publish")
 }
 
-version = "4.2.1-0-SNAPSHOT"
 
 dependencies {
   constraints {

@@ -7,7 +7,7 @@ object Versions {
 
   val springBoot = "2.2.3.RELEASE"
 
-  val jgivenAddons = "0.6.0"
+  val jgivenAddons = "0.6.1-SNAPSHOT"
 
 
   val mapdb = "3.0.7"

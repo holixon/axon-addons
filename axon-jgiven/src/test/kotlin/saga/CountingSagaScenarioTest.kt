@@ -1,7 +1,6 @@
 package io.toolisticon.addons.axon.jgiven.saga
 
 import com.tngtech.jgiven.annotation.ProvidedScenarioState
-import io.toolisticon.addons.axon.jgiven.SagaFixtureScenarioTest
 import io.toolisticon.addons.jgiven.GIVEN
 import io.toolisticon.addons.jgiven.THEN
 import io.toolisticon.addons.jgiven.WHEN
