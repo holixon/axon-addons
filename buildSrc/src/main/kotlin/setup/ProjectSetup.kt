@@ -1,7 +1,6 @@
 package setup
 
 import Github
-import Versions
 import _buildsrc.junit5
 import _buildsrc.propertySafe
 import com.jfrog.bintray.gradle.BintrayExtension
@@ -74,8 +73,6 @@ object ProjectSetup {
       kotlinBase()
       apply(plugin = "org.jetbrains.dokka")
 
-
-
       if (publish) {
         apply(plugin = "maven-publish")
         apply(plugin = "java-library")
@@ -137,7 +134,7 @@ object ProjectSetup {
     }
   }
 
-  private fun Project.kotlinBase() {
+  fun Project.kotlinBase() {
     this.apply(plugin = "org.jetbrains.kotlin.jvm")
 
     dependencies {
@@ -160,7 +157,7 @@ object ProjectSetup {
     }
   }
 
-  private fun Project.addBintray() {
+  fun Project.addBintray() {
     apply(plugin = "com.jfrog.bintray")
 
     configure<BintrayExtension> {

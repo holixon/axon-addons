@@ -1,7 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "unused")
 package _buildsrc
 
-import Versions
 import org.gradle.api.Project
 import org.gradle.api.artifacts.dsl.DependencyHandler
 

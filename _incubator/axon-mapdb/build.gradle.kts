@@ -4,7 +4,7 @@ import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  kotlin("jvm") version Versions.kotlin
+  kotlin("jvm") version Dependencies.kotlin
   //id("org.jetbrains.kotlin.plugin.allopen") version Versions.kotlin
   `java-library`
 
@@ -20,7 +20,7 @@ dependencies {
   implementation(kotlin("stdlib-jdk8"))
   implementation(axon("configuration"))
 
-  implementation("org.mapdb:mapdb:${Versions.mapdb}")
+  implementation("org.mapdb:mapdb:${Dependencies.mapdb}")
 
   testImplementation(project(":examples:giftcard-sample"))
 

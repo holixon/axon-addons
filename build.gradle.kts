@@ -1,15 +1,6 @@
-import setup.ProjectSetup
-
 plugins {
   base
   idea
-  `build-scan`
-
-  //id("org.jetbrains.dokka") version Versions.Gradle.dokka apply false
-
-
-//  `maven-publish`
-//  id("com.github.breadmoirai.github-release") version Versions.Gradle.githubRelease
 }
 
 allprojects {
@@ -20,11 +11,6 @@ allprojects {
   }
 }
 
-subprojects {
-  val projectModule = ProjectSetup.modules[this.name] ?: return@subprojects
-
-  projectModule.configure(this) // TODO: receiver
-}
 
 dependencies {
   // Make the root project archives configuration depend on every sub-project
@@ -40,10 +26,10 @@ idea {
   }
 }
 
+//  setOverwrite(true)
 //githubRelease {
 //  setOwner("toolisticon")
 //  setToken(propertySafe("github.token"))
-//  setOverwrite(true)
 //  setPrerelease((project.version as String).endsWith("-SNAPSHOT"))
 //  setVersion(project.version)
 //}

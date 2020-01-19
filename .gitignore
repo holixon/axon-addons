@@ -7,5 +7,6 @@ out/
 
 .idea/
 *.iml
+.java-version
 
 jgiven-reports/

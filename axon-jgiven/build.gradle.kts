@@ -1,11 +1,11 @@
 import _buildsrc.axonframework
-import _buildsrc.propertySafe
-import setup.ProjectSetup.projectModule
-import java.util.*
+import _buildsrc.junit5
+import setup.KotlinLibraryProject
 
 plugins {
-  kotlin("plugin.allopen") version Versions.Build.kotlin
-  id("com.tngtech.jgiven.gradle-plugin") version Versions.Test.jgiven
+  kotlin("jvm")
+  kotlin("plugin.allopen")
+  //id(Plugins.jgiven)
 }
 
 
@@ -18,8 +18,24 @@ dependencies {
   api("com.tngtech.jgiven:jgiven-junit5:${Versions.Test.jgiven}")
   api(axonframework("test"))
 
+  implementation(kotlin("stdlib-jdk8"))
+  testImplementation(junit5("api"))
+  testRuntimeOnly(junit5("engine"))
+  testImplementation("ch.qos.logback:logback-core:${Versions.Test.logback}")
+
   implementation("org.hamcrest:hamcrest-core:2.1")
   testImplementation("javax.inject:javax.inject:1")
-  testImplementation(projectModule("giftcard-sample"))
+  testImplementation(project(":giftcard-sample"))
 }
 
+tasks {
+  withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+      jvmTarget = Versions.Build.java
+    }
+  }
+
+  withType<Test> {
+    useJUnitPlatform()
+  }
+}
